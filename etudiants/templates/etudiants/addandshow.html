@@ -1,0 +1,49 @@
+{% extends 'etudiants/base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-4">
+    <h4 class="text-center alert alert alert-info">Ajouter un nouvel etudiant</h4>
+    <form method="post" action="">
+
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="hidden" class=btn btn-success value= "Ajouter">
+    </form> 
+</div>
+<div class="col-sm-7 offset-1">
+    <h4 class="text-center alert alert alert-info ">Montre les informations de l'etudiants</h4>
+    {% if stu %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <td scope="col">Nom</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">ACtion /th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for st in stu %}
+
+            <tr>
+                <th scope="row">{{st.id}}</th>
+                <td>{{st.id}}</td>  
+                <td>{{st.email}}</td>
+                <td>{{st.password}}</td>
+                <td>
+                    <a href="{% url 'updatedata' st.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                    <form action="{% url 'deletedata' st.id %}" method="post" class="d-inline">
+                        {% csrf_token%}
+                        <input type="submit" class="btn btn-danger" value="Supprimer"
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table
+    {% else %}
+    <h4 class="text)center alert alert-warning">Pas d'enregistrement</h4>
+</div>
+</div>
+
+{% endblock content %}
