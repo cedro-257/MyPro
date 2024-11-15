@@ -35,14 +35,14 @@
                     <a href="{% url 'updatedata' st.id %}" class="btn btn-warning btn-sm">Modifier</a>
                     <form action="{% url 'deletedata' st.id %}" method="post" class="d-inline">
                         {% csrf_token%}
-                        <input type="submit" class="btn btn-danger" value="Supprimer"
+                        <input type="submit" class="btn btn-danger" value="Supprimer">
                 </td>
             </tr>
             {% endfor %}
         </tbody>
-        </table
-    {% else %}
-    <h4 class="text)center alert alert-warning">Pas d'enregistrement</h4>
+    </table>
+    {% else %} 
+    <h4 class="text-center alert alert-warning">Pas d'enregistrement</h4>
 </div>
 </div>
 
